@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Oct 16 02:56:05 CST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-018b-34b2-0953-00003dd1e0e8 
+on database directory /Users/weli/works/jberet_tck/jakarta.batch.official.tck-2.1.1/runners/se-classpath/RUNTIMEDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@799f7e29 
+Loaded from file:/Users/weli/.m2/repository/org/apache/derby/derby/10.10.1.1/derby-10.10.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.2+9
+user.dir=/Users/weli/works/jberet_tck/jakarta.batch.official.tck-2.1.1/runners/se-classpath
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.16
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

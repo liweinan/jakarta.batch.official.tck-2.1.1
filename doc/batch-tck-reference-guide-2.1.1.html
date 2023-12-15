@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.8">
+<title>Jakarta Batch TCK Reference Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Uncomment @import statement below to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock pre.nowrap,.literalblock pre.nowrap pre,.listingblock pre.nowrap,.listingblock pre.nowrap pre{white-space:pre;word-wrap:normal}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #dddddf}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin:0 0 1.25em;padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd){background:#f8f8f7}
+table.stripes-none tr,table.stripes-odd tr:nth-of-type(even){background:none}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<style>
+/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+/*pre.CodeRay {background-color:#f7f7f8;}*/
+.CodeRay .line-numbers{border-right:1px solid #d8d8d8;padding:0 0.5em 0 .25em}
+.CodeRay span.line-numbers{display:inline-block;margin-right:.5em;color:rgba(0,0,0,.3)}
+.CodeRay .line-numbers strong{color:rgba(0,0,0,.4)}
+table.CodeRay{border-collapse:separate;border-spacing:0;margin-bottom:0;border:0;background:none}
+table.CodeRay td{vertical-align: top;line-height:1.45}
+table.CodeRay td.line-numbers{text-align:right}
+table.CodeRay td.line-numbers>pre{padding:0;color:rgba(0,0,0,.3)}
+table.CodeRay td.code{padding:0 0 0 .5em}
+table.CodeRay td.code>pre{padding:0}
+.CodeRay .debug{color:#fff !important;background:#000080 !important}
+.CodeRay .annotation{color:#007}
+.CodeRay .attribute-name{color:#000080}
+.CodeRay .attribute-value{color:#700}
+.CodeRay .binary{color:#509}
+.CodeRay .comment{color:#998;font-style:italic}
+.CodeRay .char{color:#04d}
+.CodeRay .char .content{color:#04d}
+.CodeRay .char .delimiter{color:#039}
+.CodeRay .class{color:#458;font-weight:bold}
+.CodeRay .complex{color:#a08}
+.CodeRay .constant,.CodeRay .predefined-constant{color:#008080}
+.CodeRay .color{color:#099}
+.CodeRay .class-variable{color:#369}
+.CodeRay .decorator{color:#b0b}
+.CodeRay .definition{color:#099}
+.CodeRay .delimiter{color:#000}
+.CodeRay .doc{color:#970}
+.CodeRay .doctype{color:#34b}
+.CodeRay .doc-string{color:#d42}
+.CodeRay .escape{color:#666}
+.CodeRay .entity{color:#800}
+.CodeRay .error{color:#808}
+.CodeRay .exception{color:inherit}
+.CodeRay .filename{color:#099}
+.CodeRay .function{color:#900;font-weight:bold}
+.CodeRay .global-variable{color:#008080}
+.CodeRay .hex{color:#058}
+.CodeRay .integer,.CodeRay .float{color:#099}
+.CodeRay .include{color:#555}
+.CodeRay .inline{color:#000}
+.CodeRay .inline .inline{background:#ccc}
+.CodeRay .inline .inline .inline{background:#bbb}
+.CodeRay .inline .inline-delimiter{color:#d14}
+.CodeRay .inline-delimiter{color:#d14}
+.CodeRay .important{color:#555;font-weight:bold}
+.CodeRay .interpreted{color:#b2b}
+.CodeRay .instance-variable{color:#008080}
+.CodeRay .label{color:#970}
+.CodeRay .local-variable{color:#963}
+.CodeRay .octal{color:#40e}
+.CodeRay .predefined{color:#369}
+.CodeRay .preprocessor{color:#579}
+.CodeRay .pseudo-class{color:#555}
+.CodeRay .directive{font-weight:bold}
+.CodeRay .type{font-weight:bold}
+.CodeRay .predefined-type{color:inherit}
+.CodeRay .reserved,.CodeRay .keyword {color:#000;font-weight:bold}
+.CodeRay .key{color:#808}
+.CodeRay .key .delimiter{color:#606}
+.CodeRay .key .char{color:#80f}
+.CodeRay .value{color:#088}
+.CodeRay .regexp .delimiter{color:#808}
+.CodeRay .regexp .content{color:#808}
+.CodeRay .regexp .modifier{color:#808}
+.CodeRay .regexp .char{color:#d14}
+.CodeRay .regexp .function{color:#404;font-weight:bold}
+.CodeRay .string{color:#d20}
+.CodeRay .string .string .string{background:#ffd0d0}
+.CodeRay .string .content{color:#d14}
+.CodeRay .string .char{color:#d14}
+.CodeRay .string .delimiter{color:#d14}
+.CodeRay .shell{color:#d14}
+.CodeRay .shell .delimiter{color:#d14}
+.CodeRay .symbol{color:#990073}
+.CodeRay .symbol .content{color:#a60}
+.CodeRay .symbol .delimiter{color:#630}
+.CodeRay .tag{color:#008080}
+.CodeRay .tag-special{color:#d70}
+.CodeRay .variable{color:#036}
+.CodeRay .insert{background:#afa}
+.CodeRay .delete{background:#faa}
+.CodeRay .change{color:#aaf;background:#007}
+.CodeRay .head{color:#f8f;background:#505}
+.CodeRay .insert .insert{color:#080}
+.CodeRay .delete .delete{color:#800}
+.CodeRay .change .change{color:#66f}
+.CodeRay .head .head{color:#f4f}
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>Jakarta Batch TCK Reference Guide</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_preface">1. Preface</a>
+<ul class="sectlevel2">
+<li><a href="#_licensing">1.1. Licensing</a></li>
+<li><a href="#_who_should_use_this_guide">1.2. Who Should Use This Guide</a></li>
+<li><a href="#_terminology_se_mode_vs_ee_mode">1.3. Terminology - "SE mode" vs. "EE mode"</a></li>
+<li><a href="#_before_you_read_this_guide">1.4. Before You Read This Guide</a></li>
+<li><a href="#_terminology_standalone_tck">1.5. Terminology - "Standalone TCK"</a></li>
+</ul>
+</li>
+<li><a href="#_major_tck_changes_adding_platform_coverage_switch_to_maven">2. Major TCK Changes:  Adding Platform Coverage + Switch to Maven</a></li>
+<li><a href="#_what_tests_must_i_pass_to_certify_compatibility">3. What Tests Must I Pass To Certify Compatibility?</a>
+<ul class="sectlevel2">
+<li><a href="#_runtime_tests_signature_tests_required">3.1. Runtime Tests &amp; Signature Tests Required</a></li>
+<li><a href="#_runtime_tests_se_vs_ee">3.2. Runtime tests - SE vs. EE</a></li>
+<li><a href="#_java_se_level_java_11_or_java_17">3.3. Java SE level - Java 11 or Java 17</a></li>
+</ul>
+</li>
+<li><a href="#_prerequisites">4. Prerequisites</a>
+<ul class="sectlevel2">
+<li><a href="#_software_to_install">4.1. Software To Install</a></li>
+<li><a href="#_other_dependencies">4.2. Other Dependencies</a></li>
+</ul>
+</li>
+<li><a href="#_a_guide_to_the_tck_distribution">5. A Guide to the TCK Distribution</a>
+<ul class="sectlevel2">
+<li><a href="#_obtaining_the_software">5.1. Obtaining the Software</a></li>
+<li><a href="#_the_tck_environment">5.2. The TCK Environment</a></li>
+<li><a href="#_a_quick_tour_of_the_tck_artifacts">5.3. A Quick Tour of the TCK Artifacts</a></li>
+</ul>
+</li>
+<li><a href="#_quick_start_run_the_tck_against_jbatch">6. Quick Start - Run the TCK against jbatch</a></li>
+<li><a href="#_tck_test_requirements">7. TCK Test Requirements</a>
+<ul class="sectlevel2">
+<li><a href="#_runtime_tests">7.1. Runtime tests</a></li>
+<li><a href="#_signature_tests">7.2. Signature tests</a></li>
+</ul>
+</li>
+<li><a href="#_requirements_as_illustrated_by_tck_runners">8. Requirements As Illustrated by TCK "runners"</a>
+<ul class="sectlevel2">
+<li><a href="#_modifiable_runner_with_release_version">8.1. Modifiable runner (with release version)</a></li>
+<li><a href="#_runners_use_tck_zip_artifacts_for_viewing_not_for_execution">8.2. Runners use TCK ZIP artifacts for viewing, not for execution</a></li>
+<li><a href="#_runners_inherit_from_batch_tck_modules">8.3. Runners inherit from Batch TCK modules</a></li>
+</ul>
+</li>
+<li><a href="#_junit_se_suite_se_classpath_runner">9. JUnit SE suite - 'se-classpath' runner</a>
+<ul class="sectlevel2">
+<li><a href="#_maven_failsafe_core_execution">9.1. Maven failsafe 'core' execution</a></li>
+<li><a href="#_maven_failsafe_appbean_execution">9.2. Maven failsafe 'appbean' execution</a></li>
+<li><a href="#_alternative_approaches">9.3. Alternative Approaches</a></li>
+<li><a href="#_expected_results">9.4. Expected Results</a></li>
+<li><a href="#_in_case_of_failure">9.5. In case of Failure</a></li>
+</ul>
+</li>
+<li><a href="#_junit_ee_suite_platform_arquillian_runner">10. JUnit EE suite - 'platform-arquillian' runner</a>
+<ul class="sectlevel2">
+<li><a href="#_runtime_specific_maven_profile">10.1. Runtime-specific Maven profile</a></li>
+<li><a href="#_jakarta_batch_arquillian_exec_parent_parent_module">10.2. 'jakarta.batch.arquillian.exec-parent' parent module</a></li>
+<li><a href="#_jakarta_enterprise_beans_vs_web_executions_core_vs_appbean_executions">10.3. Jakarta Enterprise Beans vs web executions, core vs appbean executions</a></li>
+<li><a href="#_one_time_setup_used_for_all_failsafe_executions">10.4. One-time setup used for all failsafe executions</a></li>
+<li><a href="#_maven_failsafe_core_execution_core_ejb">10.5. Maven failsafe core execution: 'core-ejb'</a></li>
+<li><a href="#_maven_failsafe_appbean_execution_appbean_ejb">10.6. Maven failsafe appbean execution: 'appbean-ejb'</a></li>
+<li><a href="#_maven_failsafe_web_executions_core_web_appbean_web">10.7. Maven failsafe web executions: 'core-web', 'appbean-web'</a></li>
+<li><a href="#_alternative_approaches_2">10.8. Alternative Approaches</a></li>
+<li><a href="#_expected_output">10.9. Expected Output</a></li>
+<li><a href="#_in_case_of_failure_2">In case of Failure</a></li>
+</ul>
+</li>
+<li><a href="#_signature_tests_2">11. Signature Tests</a>
+<ul class="sectlevel2">
+<li><a href="#_sigtest_runner">11.1. sigtest runner</a></li>
+<li><a href="#_java_11_vs_java_17">11.2. Java 11 vs Java 17</a></li>
+<li><a href="#_maven_setup_optional">11.3. Maven setup - OPTIONAL</a></li>
+<li><a href="#_maven_test_execution_required">11.4. Maven test execution - REQUIRED</a></li>
+<li><a href="#_expected_output_2">11.5. Expected Output</a></li>
+<li><a href="#_forcing_a_signature_test_failure_optional">11.6. Forcing a Signature Test failure (optional)</a></li>
+<li><a href="#_generating_the_signature_files_optional">11.7. Generating the Signature Files (optional)</a></li>
+</ul>
+</li>
+<li><a href="#_junit_test_suite_in_detail_optional">12. JUnit test suite in detail (Optional)</a>
+<ul class="sectlevel2">
+<li><a href="#_the_flow_of_a_typical_tck_test">12.1. The flow of a typical TCK test</a></li>
+<li><a href="#_porting_package_spi">12.2. Porting Package SPI</a></li>
+<li><a href="#_adjusting_the_default_timeout_value">12.3. Adjusting the Default Timeout Value</a></li>
+<li><a href="#_default_test_specific_wait_times_and_how_to_adjust_timeout_values">12.4. Default Test-Specific Wait Times, and How to Adjust Timeout Values</a></li>
+<li><a href="#_working_with_tck_source_debugging_etc">12.5. Working with TCK source (debugging, etc.)</a></li>
+<li><a href="#_arquillian_ee_platform_tests">12.6. Arquillian / EE Platform Tests</a></li>
+<li><a href="#_multiple_maven_executions_for_multiple_classpath_configurations">12.7. Multiple Maven Executions for Multiple Classpath Configurations</a></li>
+</ul>
+</li>
+<li><a href="#_tck_challengesappeals_process">13. TCK Challenges/Appeals Process</a>
+<ul class="sectlevel2">
+<li><a href="#_filing_a_challenge">13.1. Filing a Challenge</a></li>
+</ul>
+</li>
+<li><a href="#_certification_of_compatibility">14. Certification of Compatibility</a>
+<ul class="sectlevel2">
+<li><a href="#_filing_a_certification_request">14.1. Filing a Certification Request</a></li>
+</ul>
+</li>
+<li><a href="#_tck_spi_porting_package_in_depth_optional">15. TCK SPI "Porting Package" in-depth (optional)</a></li>
+<li><a href="#_links">16. Links</a></li>
+<li><a href="#_change_history">17. Change History</a>
+<ul class="sectlevel2">
+<li><a href="#_initial_release_jakarta_batch_1_0">17.1. Initial Release - Jakarta Batch 1.0</a></li>
+<li><a href="#_update_jakarta_batch_2_0">17.2. Update - Jakarta Batch 2.0</a></li>
+<li><a href="#_update_and_major_rework_moving_from_antmaven_jakarta_batch_2_1">17.3. Update (and major rework moving from Ant&#8594;Maven) - Jakarta Batch 2.1</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_preface">1. Preface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guide describes how to download, install, configure, and run the Technology Compatibility Kit (TCK) used to verify the compatibility of an implementation of the Jakarta Batch specification.</p>
+</div>
+<div class="paragraph">
+<p>The specification describes the job specification language, Java programming model, and runtime environment for Jakarta Batch applications.</p>
+</div>
+<div class="sect2">
+<h3 id="_licensing">1.1. Licensing</h3>
+<div class="paragraph">
+<p>The Jakarta Batch TCK is provided under the <strong>Eclipse Foundation Technology Compatibility Kit License - v 1.0</strong> [<a href="https://www.eclipse.org/legal/tck.php" class="bare">https://www.eclipse.org/legal/tck.php</a>].</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_who_should_use_this_guide">1.2. Who Should Use This Guide</h3>
+<div class="paragraph">
+<p>This guide will assist in running the test suite verifies implementation compatibility for BOTH:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>implementers of the Jakarta Batch specification  AND</p>
+</li>
+<li>
+<p>implementers of the entire Jakarta EE Platform (of which Jakarta Batch is one component).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_terminology_se_mode_vs_ee_mode">1.3. Terminology - "SE mode" vs. "EE mode"</h3>
+<div class="paragraph">
+<p>Building on the previous point, it is convenient to use, as shorthand, the term "EE mode" when talking about the TCK constructs and requirements specifically for users running the TCK to certify against the entire EE platform. It is a convenient shorthand term too, then, to use the term "SE mode" for users that are only trying to certify against the Jakarta Batch specification, though this term in some ways might be misleading.   Since the tests and the execution requirements are different for each set of users, it is helpful to use this shorthand, and we do at times in this document.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_before_you_read_this_guide">1.4. Before You Read This Guide</h3>
+<div class="paragraph">
+<p>Before reading this guide, you should familiarize yourself with the Jakarta Batch Version 2.1 specification, which can be found at <a href="https://jakarta.ee/specifications/batch/2.1/" class="bare">https://jakarta.ee/specifications/batch/2.1/</a>.</p>
+</div>
+<div class="paragraph">
+<p>Other useful information and links can be found on the eclipse.org project home page for the Jakarta Batch project [<a href="https://projects.eclipse.org/projects/ee4j.batch" class="bare">https://projects.eclipse.org/projects/ee4j.batch</a>] and also at the GitHub repository home for the specification project [<a href="https://github.com/eclipse-ee4j/batch-api" class="bare">https://github.com/eclipse-ee4j/batch-api</a>].</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_terminology_standalone_tck">1.5. Terminology - "Standalone TCK"</h3>
+<div class="paragraph">
+<p>We sometimes refer to this Batch TCK as the "standalone" TCK.  This usage comes from the fact that Jakarta Batch is part of the Jakarta EE Platform, which has a platform-level TCK, which we&#8217;re distinguishing this "standalone" TCK from.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_major_tck_changes_adding_platform_coverage_switch_to_maven">2. Major TCK Changes:  Adding Platform Coverage + Switch to Maven</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This version of the Jakarta Batch TCK introduces two major changes to the TCK:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We change the official execution of the standalone TCK from Ant to Maven. Though the TCK has long been built with Maven and we even have included execution or "runner" Maven modules, our official documentation described an Ant-based execution.  This updated version of the TCK Reference Guide details the requirements and procedures for performing an official Maven-based execution of this TCK.</p>
+</li>
+<li>
+<p>We add coverage for verifying compatibility with the Batch specification when running on the Jakarta EE Platform TCK. With this change we intend to eliminate the need to contribute the same tests packaged here in the "standalone" Jakarta Batch TCK with the Jakarta Platform TCK.  Instead someone verifying a compatible implementation of the entire Platform will need to run this Jakarta Batch  TCK in "EE mode" (roughly speaking), along with running the remaining Platform tests for verifying the remainder of the Platform.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_tests_must_i_pass_to_certify_compatibility">3. What Tests Must I Pass To Certify Compatibility?</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_runtime_tests_signature_tests_required">3.1. Runtime Tests &amp; Signature Tests Required</h3>
+<div class="paragraph">
+<p>Whether you are using this guide and the TCK to certify compatibility of a batch implementation against the Jakarta Batch specification alone, or certifying compatibility with the entire Jakarta EE Platform, you will in both cases need to run the TCK against your implementation and pass 100% of both the:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>JUnit 5 runtime tests</p>
+</li>
+<li>
+<p>Signature tests</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The two types of tests are not encapsulated in a single execution or configuration; typically they must be executed via multiple executions, as explained in detail later in the guide.</p>
+</div>
+<div class="paragraph">
+<p>By "runtime" tests we simply mean tests simulating Jakarta Batch applications running against the batch implementation attempting to certify compatibility.  These tests verify that the batch applications behave according to the details defined in the specification, as validated by the TCK test logic.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_runtime_tests_se_vs_ee">3.2. Runtime tests - SE vs. EE</h3>
+<div class="paragraph">
+<p>The set of runtime tests required to use the TCK to certify the Batch portion of Jakarta EE Platform compatibility ("EE mode") is a superset of the set of runtime tests required to satisfy compatibility only with the Jakarta Batch specification ("SE mode").</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_java_se_level_java_11_or_java_17">3.3. Java SE level - Java 11 or Java 17</h3>
+<div class="paragraph">
+<p>The JDK used during test execution must be noted and listed as an important component of the certification request.   In particular, the Java SE version is important to note, and this version must be used consistently throughout both the JUnit 5 runtime and Signature tests for a given certification request.</p>
+</div>
+<div class="paragraph">
+<p>For the current TCK version, this can be done with either Java SE Version 11 or Version 17.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites">4. Prerequisites</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_software_to_install">4.1. Software To Install</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Java/JDK</strong> - Install the JDK you intend to use for this certification request (Java SE Version 11 or Version 17).</p>
+</li>
+<li>
+<p><strong>Maven</strong> - Install Apache Maven 3.x.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_other_dependencies">4.2. Other Dependencies</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Arquillian</strong> - Since the EE Platform TCK uses Arquillian to execute tests within an Arquillian "container" for certifying against the EE Platform, you must configure an Arquillian <a href="https://arquillian.org/guides/developing_a_container_adapter/">adapter</a> for your target runtime.</p>
+</li>
+<li>
+<p><strong>Signature Test Tool</strong> - No action is needed here, but we note that the signature files were built and should be validated with the Maven plugin with group:artifact:version coordinates: <strong>org.netbeans.tools:sigtest-maven-plugin:1.6</strong>, as used by the sample sigtest runner included in the TCK zip. This is a more specific direction than in earlier releases, in which it was left more open for the user to use a compatible tool.  Since there are small differences in the various signature test tools, we standardize on this version.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_a_guide_to_the_tck_distribution">5. A Guide to the TCK Distribution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section explains how to obtain the TCK and extract it on your system.</p>
+</div>
+<div class="sect2">
+<h3 id="_obtaining_the_software">5.1. Obtaining the Software</h3>
+<div class="paragraph">
+<p>The Jakarta Batch TCK is distributed as a zip file, which contains the TCK artifacts (the test suite binary and source, porting package SPI binary and source, the test suite XML definitions, and signature files) in
+<code>/artifacts</code>, the documentation in <code>/doc</code>, and some example Maven modules showing how to run the TCK in <code>/runners</code>.
+You can access the current source code from the Git repository: <a href="https://github.com/eclipse-ee4j/batch-tck" class="bare">https://github.com/eclipse-ee4j/batch-tck</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_tck_environment">5.2. The TCK Environment</h3>
+<div class="paragraph">
+<p>The software can simply be extracted from the ZIP file.
+Once the TCK is extracted, you&#8217;ll see the following structure:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>jakarta.batch.official.tck-x.y.z/
+    artifacts/
+    doc/
+    runners/
+       platform-arquillian/
+       se-classpath/
+       sigtest/
+    LICENSE_EFTL.md
+    NOTICE.md
+    README.md</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In more detail:</p>
+</div>
+<div class="paragraph">
+<p><code>artifacts</code> contains all the test artifacts pertaining to the TCK: The TCK test classes and source, the TCK SPI classes and source, the TestNG suite.xml file and the signature test files.</p>
+</div>
+<div class="paragraph">
+<p><code>doc</code> contains the documentation for the TCK: this reference guide, plus a script that helps provide an example of how to run the TCK against the 'jbatch' implementation.</p>
+</div>
+<div class="paragraph">
+<p><code>runners</code> contains three Maven modules that provide samples for executing different portions of the TCK:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>se-classpath</strong> runner shows an execution of the JUnit runtime tests against the 'jbatch' implementation (in SE mode, NOT exercising the full Jakarta EE Platform).</p>
+</li>
+<li>
+<p>The <strong>platform-arquillian</strong> runner shows an execution of the Platform version of the JUnit runtime test suite, using Arquillian, which must be used when using the Batch TCK as part of certifying compatiblity with the full Jakarta EE Platform).</p>
+</li>
+<li>
+<p>The <strong>sigtest</strong> runner shows an execution of the signature tests against the 'jbatch' implementation.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_quick_tour_of_the_tck_artifacts">5.3. A Quick Tour of the TCK Artifacts</h3>
+<div class="sect3">
+<h4 id="_tck_junit_test_classesmethods">5.3.1. TCK JUnit test classes/methods</h4>
+<div class="paragraph">
+<p>The TCK test methods are contained in a number of test classes in the <code>com.ibm.jbatch.tck.tests.*</code> packages.
+Each test method is annotated as a JUnit 5 test using JUnit 5 annotations such as <code>org.junit.jupiter.api.Test</code>, <code>org.junit.jupiter.params.ParameterizedTest</code>, etc.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tck_test_batch_artifacts">5.3.2. TCK test batch artifacts</h4>
+<div class="paragraph">
+<p>Besides the test classes themselves, the Jakarta Batch TCK is comprised of a number of test classes located in the <code>com.ibm.jbatch.tck.artifacts</code> package which implement the interfaces defined in the Jakarta Batch API (e.g. ItemReader, ItemProcessor, ItemWriter, the various listeners, etc.). Together these batch artifacts "implement" the jobs run in individual test methods.  Another key set of batch artifacts is the set of test Job Specification Language (JSL) XML files, which are packaged in the <code>META-INF/batch-jobs</code> directory within <code>artifacts/com.ibm.jbatch.tck-x.y.z.jar</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_junit_5_suite_definition_xml_files">5.3.3. JUnit 5 "suite" definition XML files</h4>
+<div class="paragraph">
+<p>Here we use the term "suite" informally to describe groups of tests required to pass the TCK (and NOT specifically to refer to any particular "suite" construct defined by the JUnit 5 API).</p>
+</div>
+<div class="paragraph">
+<p>There are three JUnit 5 test "suites" included in the TCK.  There is a separate "suite" for each of the "SE mode" TCK and the Batch portion of the "Jakarta EE Platform" TCK and there is a third suite that must be run in both SE and EE "modes".</p>
+</div>
+<div class="paragraph">
+<p>The SE suites:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>artifacts/batch-tck-impl-SE-core-suite-includes.txt</code> suite defines the majority of the tests.</p>
+</li>
+<li>
+<p>The <code>artifacts/batch-tck-impl-appjoboperator-suite-includes.txt</code> defines a few additional tests.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The reason we need two suites here is that the tests in the second suite require a different classpath configuration than those of the first.</p>
+</div>
+<div class="paragraph">
+<p>Likewise, for the EE tests we have:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>artifacts/batch-tck-impl-EE-platform-core-suite-includes.txt</code></p>
+</li>
+<li>
+<p><code>artifacts/batch-tck-impl-appjoboperator-suite-includes.txt</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> An implementation <strong>MUST</strong> run against each provided suite XML file <span class="underline">unmodified</span> for an implementation to pass the TCK.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_api_signature_files">5.3.4. API Signature Files</h4>
+<div class="paragraph">
+<p>The two signature files, for Java 11 and 17, respectively:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>artifacts/sigtest-1.6-batch.standalone.tck.sig-2.1-se11-OpenJDK-J9</code></p>
+</li>
+<li>
+<p><code>artifacts/sigtest-1.6-batch.standalone.tck.sig-2.1-se17-TemurinHotSpot</code></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_start_run_the_tck_against_jbatch">6. Quick Start - Run the TCK against jbatch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We stop and take a break from all the description and give the user a concrete way to jump in and get something running.</p>
+</div>
+<div class="paragraph">
+<p>To run the "SE mode" TCK against the <strong>jbatch</strong> implementation, simply perform the following steps (which should complete without error).</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download TCK ZIP</p>
+</li>
+<li>
+<p>jar xf &lt;zip&gt;</p>
+</li>
+<li>
+<p>cd jakarta.batch.official.tck-2.1.0/runners/se-classpath</p>
+</li>
+<li>
+<p>mvn verify</p>
+</li>
+<li>
+<p>cd ../sigtest</p>
+</li>
+<li>
+<p>mvn verify</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tck_test_requirements">7. TCK Test Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Because there is flexibility regarding how a user could use Maven to configure a TCK execution, we make a separate, clear note here of the required number of tests needed to be passed in order to claim compliance via this TCK.</p>
+</div>
+<div class="sect2">
+<h3 id="_runtime_tests">7.1. Runtime tests</h3>
+<div class="paragraph">
+<p>For the runtime test (JUnit) component of the TCK:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>178 tests must be passed to successfully execute the SE TCK suite</p>
+</li>
+<li>
+<p>374 tests must be passed to successfully execute the EE TCK suite</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_signature_tests">7.2. Signature tests</h3>
+<div class="paragraph">
+<p>All signature tests must be passed.  The sigtest tool must be pointed to the TCK-provided signature file with an appropriate configuration and get a clean result without error or failures.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_requirements_as_illustrated_by_tck_runners">8. Requirements As Illustrated by TCK "runners"</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each of the three runners includes a POM and a goal configured to run in the "integration" phase.</p>
+</div>
+<div class="paragraph">
+<p>In general there are often several ways to accomplish any given task in Maven.   We attempt to describe below the essential aspects of the configuration necessary to execute the TCK and claim compliance vs. the parts that may be modified, taking the runner POM only as a sample starting point.</p>
+</div>
+<div class="paragraph">
+<p>There is a tension here:  on the one hand we say that the runners' POMs and configurations plus the descriptions below define requirements for setting up a valid TCK execution to certify compliance.  On the other hand we say this is just an example and do not prescribe in exacting detail precisely which Maven constructs can vs. can&#8217;t be used in writing one&#8217;s own POM.</p>
+</div>
+<div class="paragraph">
+<p>We accept this ambiguity and think we can live with this compromise.  If it turns out that implementors attempting to certify compliance find these distinctions need clarification, we can take that feedback and improve the documentation in a future release.</p>
+</div>
+<div class="sect2">
+<h3 id="_modifiable_runner_with_release_version">8.1. Modifiable runner (with release version)</h3>
+<div class="paragraph">
+<p>One unusual aspect of a POM like this is that, one the one hand, it has a non-SNAPSHOT version and is released to Maven Central.   On the other hand, it is delivered in the TCK ZIP in a way that the user may simply choose to edit it and run the TCK against their implementation, without changing the Maven GAV coordinates to something they own.   We don&#8217;t consider this a problem but beware, e.g. if you do <code>mvn install</code> you&#8217;ll be overwriting this locally. (This shouldn&#8217;t affect the TCK execution since nothing else uses any runner as a dependency or parent).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_runners_use_tck_zip_artifacts_for_viewing_not_for_execution">8.2. Runners use TCK ZIP artifacts for viewing, not for execution</h3>
+<div class="paragraph">
+<p><strong>Note:</strong> the TCK runners mentioned here are configured to run "against" artifacts referenced as Maven dependencies, and so obtained from a Maven repository (e.g Maven Central).  They are configured this way even though as explained in the guide to the TCK ZIP contents, the artifacts are all present in the TCK zip.</p>
+</div>
+<div class="paragraph">
+<p>This is a significant difference with the previous Jakarta Batch Ant-based TCK.</p>
+</div>
+<div class="paragraph">
+<p>Starting with the Jakarta Batch 2.1 TCK release, the runner configurations are NOT set up referencing relative paths within the TCK zip. The artifacts packaged in the ZIP (detailed below) only help create a self-contained TCK package, providing an easy view of what artifacts are relevant to the TCK in a single place without requiring the user to follow Maven dependency references.</p>
+</div>
+<div class="paragraph">
+<p>While it would be possible to construct a valid TCK execution configuration running against the artifacts in the TCK ZIP, an example is not provided.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_runners_inherit_from_batch_tck_modules">8.3. Runners inherit from Batch TCK modules</h3>
+<div class="paragraph">
+<p>The runners each inherit from a module within the Batch TCK, in order to leave the minimum amount of configuration needed to be performed by the implementer.  Use standard Maven techniques, e.g. <code>mvn help:effective-pom</code> to see the configuration of the module being executed merged with its parent.  <strong>NOTE:</strong> Inheriting from these parents is optional, strictly speaking, but it is a good way to ensure a valid configuration for certifying against the TCK is being used.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_junit_se_suite_se_classpath_runner">9. JUnit SE suite - 'se-classpath' runner</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We call this suite of tests the "SE" suite just to distinguish from the EE suite. It can be exercised outside of an EE platform.</p>
+</div>
+<div class="paragraph">
+<p>The 'se-classpath' runner shows an execution of the JUnit runtime tests against the 'jbatch' implementation in SE mode.  We walk through its POM configuration below.</p>
+</div>
+<div class="sect2">
+<h3 id="_maven_failsafe_core_execution">9.1. Maven failsafe 'core' execution</h3>
+<div class="paragraph">
+<p>First, we look at the 'core' execution, through which the large majority of the runtime tests are executed.  It is defined like this in the runner POM:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+                ...
+                &lt;execution&gt;
+                    &lt;id&gt;core&lt;/id&gt;
+                    &lt;goals&gt;
+                        &lt;goal&gt;integration-test&lt;/goal&gt;
+                    &lt;/goals&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and which includes four aspects, which we use to illustrate required vs. optional aspects of TCK execution.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>REQUIRED</strong> -  The test includes list must match that defined in
+<code>batch-tck-impl-SE-core-suite-includes.txt</code>, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;includesFile&gt;${project.build.directory}/test-classes/testprofiles/batch-tck-impl-SE-core-suite-includes.txt&lt;/includesFile&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - The configuration must load the test classes in Maven artifact: <code>jakarta.batch:com.ibm.jbatch.tck</code> by a similar, or equivalent mechanism, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;dependenciesToScan&gt;
+            &lt;dependency&gt;jakarta.batch:com.ibm.jbatch.tck&lt;/dependency&gt;
+        &lt;/dependenciesToScan&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - The configuration must NOT include the artifacts packaged in Maven artifact <code>jakarta.batch:com.ibm.jbatch.tck.appbean</code> on the test classpath.   Since our runner POM includes this as a test-scoped dependency, our execution configuration must exclude this like:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;classpathDependencyExcludes&gt;jakarta.batch:com.ibm.jbatch.tck.appbean&lt;/classpathDependencyExcludes&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>OPTIONAL</strong> - It is up to the user which, if any system properties are passed to the execution, either properties defined by the Batch TCK (e.g. the wait times explained elsewhere in this document) or implementation-specific properties. In the runner we use properties to enable executing with the 'jbatch' implementation:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+       ...
+       &lt;systemPropertiesFile&gt;${project.basedir}/config/tck.exec.properties&lt;/systemPropertiesFile&gt;</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_maven_failsafe_appbean_execution">9.2. Maven failsafe 'appbean' execution</h3>
+<div class="paragraph">
+<p>Next we look at the 'appbean' execution, through which only a small number of tests are executed.  This configuration differs from that of the 'core' execution in that an application JobOperator bean producer is added to the test classpath.  It is defined like this in the runner POM:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+            ...
+            &lt;execution&gt;
+                &lt;id&gt;appbean&lt;/id&gt;
+                &lt;goals&gt;
+                    &lt;goal&gt;integration-test&lt;/goal&gt;
+                &lt;/goals&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and we step through the same four details:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>REQUIRED</strong> -  The test includes list must match that defined in
+<code>batch-tck-impl-appjoboperator-suite-includes.txt</code>, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+       &lt;includesFile&gt;${project.build.directory}/test-classes/testprofiles/batch-tck-impl-appjoboperator-suite-includes.txt&lt;/includesFile&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - The configuration must load the test classes in Maven artifact: <code>jakarta.batch:com.ibm.jbatch.tck.appbean</code> by a similar, or equivalent mechanism, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;dependenciesToScan&gt;
+            &lt;dependency&gt;jakarta.batch:com.ibm.jbatch.tck.appbean&lt;/dependency&gt;
+        &lt;/dependenciesToScan&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - The configuration must include the artifacts packaged in Maven artifact <code>jakarta.batch:com.ibm.jbatch.tck.appbean</code> on the test classpath. In the runner we have no special plugin/execution configuration, having used dependency:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>        &lt;dependency&gt;
+            &lt;groupId&gt;jakarta.batch&lt;/groupId&gt;
+            &lt;artifactId&gt;com.ibm.jbatch.tck.appbean&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>OPTIONAL</strong> - It is up to the user which, if any system properties are passed to the execution, either properties defined by the Batch TCK (e.g. the wait times explained elsewhere in this document) or implementation-specific properties. In the runner we use properties to enable executing with the 'jbatch' implementation:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+       ...
+       &lt;systemPropertiesFile&gt;${project.basedir}/config/tck.exec.properties&lt;/systemPropertiesFile&gt;</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_alternative_approaches">9.3. Alternative Approaches</h3>
+<div class="paragraph">
+<p>Note there is no requirement to configure these two executions from a single POM, as the runner does.  E.g. two separate POMs could be used. Hopefully the details above provide clear enough guidance for what is and is not required for each execution. As mentioned above it is not required that the user&#8217;s "runner" module inherit from the parent like this example one does.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_expected_results">9.4. Expected Results</h3>
+<div class="paragraph">
+<p>(Here we abstract out the exact numbers to avoid forgetting to update this count and causing ambiguity with the required test count detailed elsewhere).</p>
+</div>
+<div class="paragraph">
+<p>The 'core' execution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>[INFO]
+[INFO] Results:
+[INFO]
+[WARNING] Tests run: MMM, Failures: 0, Errors: 0, Skipped: NN</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The 'appbean' execution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: N, Failures: 0, Errors: 0, Skipped: 0</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_in_case_of_failure">9.5. In case of Failure</h3>
+<div class="paragraph">
+<p><strong>Note</strong>: there are many forced failure scenarios tested by the TCK, so typically the log will show a lot of exception stack traces during a normal, successful execution.</p>
+</div>
+<div class="paragraph">
+<p>If you experienced a failure, it is possible that you experienced a timing issue.  The TCK has several built-in properties allowing for tuning of execution to deal with these, and instructions elsewhere in this guide for doing so.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_junit_ee_suite_platform_arquillian_runner">10. JUnit EE suite - 'platform-arquillian' runner</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each of these Arquillian tests run within the runtime&#8217;s "container", with the help of an Arquillian adapter for that runtime implementation (mentioned as a prerequisite).  This Arquillian-based test suite executes the same set of tests within each of an Jakarta Enterprise Beans container and a Servlet container.</p>
+</div>
+<div class="paragraph">
+<p>The 'platform-arquillian' runner shows how to configure an execution of the JUnit runtime tests implementation in EE mode against some implementation via an Arquillian adapter. This exercises Batch as part of the full Jakarta EE Platform.  We walk through its POM configuration below.</p>
+</div>
+<div class="sect2">
+<h3 id="_runtime_specific_maven_profile">10.1. Runtime-specific Maven profile</h3>
+<div class="paragraph">
+<p>Without additional configuration the runner POM is not actually configured to run any tests, because the specific runtime with its specific Arquillian adapter is not configured by default.</p>
+</div>
+<div class="paragraph">
+<p>Instead the runtime-specific pieces are configured within a set of optional profiles, e.g. <code>-Pglassfish-remote</code> or <code>-Pliberty-managed</code>, to run against GlassFish or Open Liberty, respectively.</p>
+</div>
+<div class="paragraph">
+<p>To run against a specific runtime, then, you would need to combine something like this runtime-specific profile with the common configuration defined in the runner module (independent of any profile).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jakarta_batch_arquillian_exec_parent_parent_module">10.2. 'jakarta.batch.arquillian.exec-parent' parent module</h3>
+<div class="paragraph">
+<p>The runner provides the common setup and configuration needed for any runtime-specific execution via a parent module that can referenced via:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">    <span class="tag">&lt;parent&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>jakarta.batch<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>jakarta.batch.arquillian.exec-parent<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>...<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;/parent&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>While it is not required, strictly speaking, to inherit from this parent, it is a convenient way to add all the required elements of the TCK execution while still providing a space for customization to adapt to your specific runtime.</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong> Because the parent module is referenced by other modules we don&#8217;t include the parent module in the TCK distribution, to avoid confusion.   An easy, standard Maven technique for merging a given POM with its parent (and ancestors, more generally) is to run the goal:  <code>mvn help:effective-pom</code> from the current module directory at the command line.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jakarta_enterprise_beans_vs_web_executions_core_vs_appbean_executions">10.3. Jakarta Enterprise Beans vs web executions, core vs appbean executions</h3>
+<div class="paragraph">
+<p>A requirement for certifying in EE mode is to execute each test in each of a servlet ('web') and a Jakarta Enterprise Bean context.  So to run from a "Jakarta Enterprise Bean context" is to have the test perform the JobOperator API calls used in each TCK test method from within a Jakarta Enterprise Bean (provided by the TCK).  This mechanism is established through the Arquillian adapter plus our Arquillian extension module, configured with the help of the parent POM.</p>
+</div>
+<div class="paragraph">
+<p>We also need to run a set of tests (the 'appbean' tests) with a different application classpath than the 'core' majority of the tests.</p>
+</div>
+<div class="paragraph">
+<p>Therefore we set up our parent POM to establish four executions of the 'failsafe' plugin:  for each of the two classpath configurations ('core' and 'appbean') we have one execution for each of the Jakarta Enterprise Beans and servlet contexts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_one_time_setup_used_for_all_failsafe_executions">10.4. One-time setup used for all failsafe executions</h3>
+<div class="sect3">
+<h4 id="_optional_use_dependency_plugin_to_conveniently_unpack_dependencies">10.4.1. OPTIONAL - use dependency plugin to conveniently unpack dependencies</h4>
+<div class="paragraph">
+<p>The test suite files, the test database DDLs, and reporting XSL can be extracted into place by adding the following plugin to your module build (the execution is configured in the 'jakarta.batch.arquillian.exec-parent' module to run during the <code>pre-integration-test</code> phase.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">        <span class="tag">&lt;plugins&gt;</span>
+            <span class="tag">&lt;plugin&gt;</span>
+                <span class="tag">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
+                <span class="tag">&lt;artifactId&gt;</span>maven-dependency-plugin<span class="tag">&lt;/artifactId&gt;</span>
+            <span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_required_test_database_setup_ddl_files">10.4.2. REQUIRED - test database setup - DDL files</h4>
+<div class="paragraph">
+<p>The test suite includes tests that use an application database which must be created separately, prior to TCK execution, potentially in an implementation-specific way.  The DDL defining the required table format is specified in a set of *.sql files included in the 'com.ibm.jbatch.tck' module dependency.  These can most conveniently be accessed by adding the dependency plugin with parent configuration, as mentioned in the previous section.   They can also be accessed in the TCK zip at file: <code>artifacts/com.ibm.jbatch.tck-&lt;version&gt;.jar</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_note_database_setup_process_may_require_extra_steps_for_non_derby_databases">10.4.3. NOTE: database setup process may require extra steps for non-Derby databases</h4>
+<div class="paragraph">
+<p>During TCK execution, the test application accesses database tables with the 'app' high-level qualifier (or "schema"), e.g. <code>insert into app.numbers values(?, ?)</code>.  However, this 'app' high-level qualifier does not appear in the *.sql setup DDL files provided by the TCK.  These DDL files reference tables without a high-level qualifier.</p>
+</div>
+<div class="paragraph">
+<p>Since the Apache Derby database uses 'app' as the default high-level qualifier (schema), the runtime access aligns with the setup DDL when Derby is used as the database product.</p>
+</div>
+<div class="paragraph">
+<p>However, when setting up other databases not using 'app' as the default schema, additional step(s) may be needed.  This could involve modifying the setup DDL to set 'app' as the high-level qualifier and/or setting the current schema way when executing the database setup DDL, perhaps using a database-specific tool.</p>
+</div>
+<div class="paragraph">
+<p>In issue:  <a href="https://github.com/eclipse-ee4j/batch-tck/issues/51" class="bare">https://github.com/eclipse-ee4j/batch-tck/issues/51</a> a challenge was raised because the TCK seemed too dependent on the use of the Derby database.</p>
+</div>
+<div class="paragraph">
+<p>The challenge was accepted but it was agreed to resolve this for the current TCK release by documenting the workaround (in the documentation section you are reading now) and opening an issue to enhance the TCK in a future release (that enhancement issue is: <a href="https://github.com/eclipse-ee4j/batch-tck/issues/55" class="bare">https://github.com/eclipse-ee4j/batch-tck/issues/55</a>).  This future enhancement could either allow the schema to be parameterized or perhaps removed altogether.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_note_any_database_with_jdbc_driver_may_be_used">10.4.4. NOTE: any database with JDBC driver may be used</h4>
+<div class="paragraph">
+<p>There is no requirement to use one of the databases for which a DDL is included; another database with JDBC-compliant driver could potentially be used.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_optional_test_results_reporting">10.4.5. OPTIONAL test results reporting</h4>
+<div class="paragraph">
+<p>Finally, the parent POM configures a couple of plugins which, if added to your build in order (first the xml plugin, then echo plugin), can conveniently collect and report test results across the multiple failsafe executions.
+This output can then be used to report test results for Jakarta TCK certification.</p>
+</div>
+<div class="paragraph">
+<p>These plugins will transfer the summary from the failsafe plugin and print it to output, using the XSL (zipped up in the 'com.ibm.jbatch.tck' module dependency which can be unpacked with the dependency plugin as mentioned above).</p>
+</div>
+<div class="paragraph">
+<p>E.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">    <span class="tag">&lt;plugins&gt;</span>
+        <span class="tag">&lt;plugin&gt;</span>
+            <span class="tag">&lt;groupId&gt;</span>org.codehaus.mojo<span class="tag">&lt;/groupId&gt;</span>
+            <span class="tag">&lt;artifactId&gt;</span>xml-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;/plugin&gt;</span>
+        <span class="tag">&lt;plugin&gt;</span>
+            <span class="tag">&lt;groupId&gt;</span>com.github.ekryd.echo-maven-plugin<span class="tag">&lt;/groupId&gt;</span>
+            <span class="tag">&lt;artifactId&gt;</span>echo-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_maven_failsafe_core_execution_core_ejb">10.5. Maven failsafe core execution: 'core-ejb'</h3>
+<div class="paragraph">
+<p>First, we look at the 'core' executions, through which the large majority of the runtime tests are executed.  If we look specifically at the 'core-ejb' execution, is defined like this in the parent POM:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+                ...
+                &lt;execution&gt;
+                    &lt;id&gt;core-ejb&lt;/id&gt;
+                    &lt;goals&gt;
+                        &lt;goal&gt;integration-test&lt;/goal&gt;
+                    &lt;/goals&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and it includes five aspects, which we use to illustrate required vs. optional aspects of TCK execution.</p>
+</div>
+<div class="sect3">
+<h4 id="_required_pom_elements">10.5.1. REQUIRED POM elements</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>REQUIRED</strong> -  The test includes list must match that defined in
+<code>batch-tck-impl-EE-platform-core-suite-includes.txt</code>, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;includesFile&gt;${project.build.directory}/test-classes/testprofiles/batch-tck-impl-EE-platform-core-suite-includes.txt&lt;/includesFile&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - The configuration must load the test classes in Maven artifact: <code>jakarta.batch:com.ibm.jbatch.tck</code> by a similar, or equivalent mechanism, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;dependenciesToScan&gt;
+            &lt;dependency&gt;jakarta.batch:com.ibm.jbatch.tck&lt;/dependency&gt;
+        &lt;/dependenciesToScan&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - By default there&#8217;s nothing to do here.   But, for the sake of completeness, we note the configuration must NOT include the artifacts packaged in Maven artifact <code>jakarta.batch:com.ibm.jbatch.tck.appbean</code> on the test classpath.  For the analogous case the corresponding SE test configuration used the  classpathDependencyExcludes parameter to ensure the 'appbean' artifact did not appear on the test classpath.  Our Arquillian-based test uses custom ShrinkWrap logic to package a test application.  By default, we will not package 'appbean'.  The exact requirement using this ShrinkWrap logic is that the <strong>arquillian.extensions.jakarta.batch.appbean</strong> system property must NOT equal to <code>true</code> (via a case-insensitive match).</p>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - The system property:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>junit.jupiter.extensions.autodetection.enabled</strong> system property must be set to <code>true</code> to allow the TCK&#8217;s JUnit extension to plugin to JUnit 5.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;systemPropertyVariables&gt;
+            &lt;junit.jupiter.extensions.autodetection.enabled&gt;true&lt;/junit.jupiter.extensions.autodetection.enabled&gt;
+        &lt;/systemPropertyVariables&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - The system property:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>jakarta.batch.tck.vehicles.vehicleName</strong> system property must be set to <code>ejb</code> to execute within the Jakarta Enterprise Beans context, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;systemPropertyVariables&gt;
+            &lt;jakarta.batch.tck.vehicles.vehicleName&gt;ejb&lt;/jakarta.batch.tck.vehicles.vehicleName&gt;
+        &lt;/systemPropertyVariables&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_optional_pom_properties">10.5.2. OPTIONAL POM properties</h4>
+<div class="paragraph">
+<p>As long as the above requirements are met, it is up to the user which, if any, other system properties are passed to the execution, either properties defined by the Batch TCK (e.g. the wait times explained elsewhere in this document) or implementation-specific properties.</p>
+</div>
+<div class="paragraph">
+<p>Some special, optional properties we mention which are defined by the TCK itself:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Specify to exclude some artifacts on the maven test classpath from the Arquillian test
+deployment with the <code>arquillian.extensions.jakarta.batch.groupPrefixesToIgnore</code> system property if they cause problems.
+Specify prefixes of group names, separated by a column.</p>
+</li>
+<li>
+<p>If the JNDI name of the <code>EJBVehicleRemote</code> Jakarta Enterprise Bean is different from the default name, specify the correct name using
+the <code>jakarta.batch.tck.vehicles.ejb.jndiName</code> system property, either in the failsafe maven plugin, or inside the implementation container.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>TCK wait times</strong></p>
+</div>
+<div class="paragraph">
+<p>The TCK wait times for the various tests can be configured via system properties, however note that configuring the failsafe execution which these
+system properties does not itself guarantee that these properties will be propagated to the underlying Arquillian container.
+ If you want to apply them within the implementation container, you need to apply them to the implementation in a vendor-specific way, before you execute the TCK.</p>
+</div>
+<div class="paragraph">
+<p>E.g. to apply a custom set of wait time properties in Glassfish you could execute <code>mvn pre-integration-test</code>, then take the generated <code>test.properties</code> and apply using <code>asadmin create-system-properties</code>
+against a running GlassFish server.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_maven_failsafe_appbean_execution_appbean_ejb">10.6. Maven failsafe appbean execution: 'appbean-ejb'</h3>
+<div class="paragraph">
+<p>Next we look at the 'appbean' execution, through which only a small number of tests are executed.  This configuration differs from that of the 'core-ejb' execution in that an application JobOperator bean producer is added to the test classpath. For the EE/platform suite, this is accomplished via a custom ShrinkWrap routine defined in our Arquillian extension module.</p>
+</div>
+<div class="sect3">
+<h4 id="_required_pom_elements_2">10.6.1. REQUIRED POM elements</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>REQUIRED</strong> -  The test includes list must match that defined in
+<code>batch-tck-impl-appjoboperator-suite-includes.txt</code>, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+       &lt;includesFile&gt;${project.build.directory}/test-classes/testprofiles/batch-tck-impl-appjoboperator-suite-includes.txt&lt;/includesFile&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - The configuration must load the test classes in Maven artifact: <code>jakarta.batch:com.ibm.jbatch.tck.appbean</code> by a similar, or equivalent mechanism, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;dependenciesToScan&gt;
+            &lt;dependency&gt;jakarta.batch:com.ibm.jbatch.tck.appbean&lt;/dependency&gt;
+        &lt;/dependenciesToScan&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - The configuration must include the artifacts packaged in Maven artifact <code>jakarta.batch:com.ibm.jbatch.tck.appbean</code> on the test classpath.  This is accomplished by configured the custom ShrinkWrap logic via setting the <strong>arquillian.extensions.jakarta.batch.appbean</strong> to <code>true</code>, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;systemPropertyVariables&gt;
+            ...
+            &lt;arquillian.extensions.jakarta.batch.appbean&gt;true&lt;/arquillian.extensions.jakarta.batch.appbean&gt;
+        &lt;/systemPropertyVariables&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> -
+The <strong>junit.jupiter.extensions.autodetection.enabled</strong> system property must be set to <code>true</code> to allow the TCK&#8217;s JUnit extension to plugin to JUnit 5, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;systemPropertyVariables&gt;
+            ...
+            &lt;junit.jupiter.extensions.autodetection.enabled&gt;true&lt;/junit.jupiter.extensions.autodetection.enabled&gt;
+        &lt;/systemPropertyVariables&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>REQUIRED</strong> - The system property:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>jakarta.batch.tck.vehicles.vehicleName</strong> system property must be set to <code>ejb</code> to execute within the Jakarta Enterprise Bean context, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;systemPropertyVariables&gt;
+            &lt;jakarta.batch.tck.vehicles.vehicleName&gt;ejb&lt;/jakarta.batch.tck.vehicles.vehicleName&gt;
+        &lt;/systemPropertyVariables&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_optional_pom_properties_2">10.6.2. OPTIONAL POM properties</h4>
+<div class="paragraph">
+<p>See the discussion in the earlier section regarding the 'core-ejb' execution, as the same details apply to this execution as well.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_maven_failsafe_web_executions_core_web_appbean_web">10.7. Maven failsafe web executions: 'core-web', 'appbean-web'</h3>
+<div class="paragraph">
+<p>The requirements for each of the  'core-web', 'appbean-web' executions are identical to those of the 'core-ejb', 'appbean-ejb' executions, respectively, with a single change:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>REQUIRED</strong> - The system property:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>jakarta.batch.tck.vehicles.vehicleName</strong> system property must be set to <code>web</code> to execute within a Servlet (web) context, e.g.:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;configuration&gt;
+        ...
+        &lt;systemPropertyVariables&gt;
+            &lt;jakarta.batch.tck.vehicles.vehicleName&gt;web&lt;/jakarta.batch.tck.vehicles.vehicleName&gt;
+        &lt;/systemPropertyVariables&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>So each of these two "web" executions must be run, and all tests contained must pass.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_alternative_approaches_2">10.8. Alternative Approaches</h3>
+<div class="paragraph">
+<p>Note there is no requirement to configure these four executions from a single POM, as the runner does.  E.g. one conceivable approach would be to use four separate POMs even, if that were preferred for some reason. Hopefully the details above provide clear enough guidance for what is and is not required for each execution, and if not an issue should be raised with the Jakarta Batch TCK project.  As mentioned above it is not required that the user&#8217;s "runner" module inherit from the parent like this example one does.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_expected_output">10.9. Expected Output</h3>
+<div class="paragraph">
+<p>Here is example output when we, as in the sample runner, configure the 'xml' and 'echo' Maven plugins to collect and display the test results.</p>
+</div>
+<div class="paragraph">
+<p>(Here we abstract out the exact numbers to avoid forgetting to update this count and causing ambiguity with the required test count detailed elsewhere).</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Jakarta Batch TCK completed running NNN tests.
+Number of Tests Passed      = NNN
+Number of Tests with Errors = 0
+Number of Tests Failed      = 0
+Number of Tests Skipped     = XX</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_in_case_of_failure_2">In case of Failure</h3>
+<div class="paragraph">
+<p><strong>Note</strong>: there are many forced failure scenarios tested by the TCK, so typically the log will show a lot of exception stack traces during a normal, successful execution.</p>
+</div>
+<div class="paragraph">
+<p>If you experienced a failure, it is possible that you experienced a timing issue.  The TCK has several built-in properties allowing for tuning of execution to deal with these, and instructions elsewhere in this guide for doing so.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_signature_tests_2">11. Signature Tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The signature tests validate the integrity of the <code>jakarta.batch</code> Java "namespace" (or "package prefix") of the batch implementation.   This would be especially important for an implementation packaging its own API JAR in which the API must be validated in its entirety.  For implementations expecting their users to rely on the API released by the Jakarta Batch specification project (e.g. to Maven Central) the signature tests are also important to validate that improper (non-spec-defined) extensions have not been added to <code>jakarta.batch.*</code> packages/classes/etc.</p>
+</div>
+<div class="paragraph">
+<p>As mentioned in the prerequisite section the signature file formats across the various signature test tools have diverged and this test suite uses the Maven plugin with group:artifact:version coordinates: <strong>org.netbeans.tools:sigtest-maven-plugin:1.6</strong>.</p>
+</div>
+<div class="sect2">
+<h3 id="_sigtest_runner">11.1. sigtest runner</h3>
+<div class="paragraph">
+<p>The 'sigtest' runner shows an execution of the signature tests against the 'jbatch' implementation, while pulling in its dependencies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jakarta Batch 2.1 API</p>
+</li>
+<li>
+<p>Jakarta Inject 2.0 API</p>
+</li>
+<li>
+<p>Jakarta CDI 4.0 API</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_java_11_vs_java_17">11.2. Java 11 vs Java 17</h3>
+<div class="paragraph">
+<p>The TCK provides a distinct signature file depending on whether a Java 11 or a Java 17 JDK is used to certify.</p>
+</div>
+<div class="paragraph">
+<p>The runner provides a profile-based POM config which is automatically activated based on the Java SE level of the JDK used to run Maven.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_maven_setup_optional">11.3. Maven setup - OPTIONAL</h3>
+<div class="paragraph">
+<p>In calling the setup "OPTIONAL" we are referring to the fact that an implementer does not need to use any of these exact goals or configuration, though it is probably necessary that some analogous setup work will need to be done before executing the signature tests.</p>
+</div>
+<div class="paragraph">
+<p>In our example runner, the 'maven-dependency-plugin' is used in the 'pre-integration-test' phase to setup the later sigtest execution.</p>
+</div>
+<div class="paragraph">
+<p>The first execution unpacks (copies) the signature files themselves into place in the <strong>target/sigtest-copy</strong> location:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+            &lt;execution&gt;
+                &lt;id&gt;unpack-sigfiles&lt;/id&gt;
+                ...
+                &lt;configuration&gt;
+                   &lt;outputDirectory&gt;${project.build.directory}/sigtest-copy&lt;/outputDirectory&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second execution unpacks the jbatch impl, including its API dependencies (it uses the default output directory of <strong>target/dependency</strong>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;execution&gt;
+        &lt;id&gt;unpack-classes&lt;/id&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The 'sigtest-maven-plugin' can also be configured to pick up dependencies as Maven dependencies, building the "test classpath" via Maven.   However, we chose to show a more explicit approach, "flattening" the dependency tree by copying everything into a single directory we will execute the tests against</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_maven_test_execution_required">11.4. Maven test execution - REQUIRED</h3>
+<div class="sect3">
+<h4 id="_required_jdk_level">11.4.1. Required JDK level</h4>
+<div class="paragraph">
+<p>It is REQUIRED that you run with a JDK of the Java version that you are certifying against. We did not develop the current instructions and requirements with support for the ability to somehow "target" a different Java version (e.g. Java 11) than the version of the JDK using to run the tests via Maven (e.g. Java 17).</p>
+</div>
+<div class="paragraph">
+<p>In particular note this implies you can NOT use the <code>&lt;release/&gt;</code> parameter with the sigtest plugin configuration, e.g. <code>&lt;release&gt;17&lt;/release&gt;</code>, though it might seem that it is designed for exactly this purpose.  (Though this could possibly be an area for future enhancement for someone interested in improving the Batch TCK for future releases).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_required_maven_configuration">11.4.2. Required Maven configuration</h4>
+<div class="paragraph">
+<p>The execution of the signature tests is accomplished by running the sigtest plugin&#8217;s <code>check</code> goal.</p>
+</div>
+<div class="paragraph">
+<p>In the runner, this is done during the integration-test phase (after the pre-integration-test setup). The "core" configuration (the part that&#8217;s independent of profile) in the runner looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>&lt;plugin&gt;
+    &lt;groupId&gt;org.netbeans.tools&lt;/groupId&gt;
+    &lt;artifactId&gt;sigtest-maven-plugin&lt;/artifactId&gt;
+    ...
+   &lt;executions&gt;
+       &lt;execution&gt;
+       &lt;id&gt;default-cli&lt;/id&gt;
+       &lt;phase&gt;integration-test&lt;/phase&gt;
+       &lt;goals&gt;
+           &lt;goal&gt;check&lt;/goal&gt;
+    ...
+    &lt;configuration&gt;
+        &lt;action&gt;strictcheck&lt;/action&gt;
+        &lt;failOnError&gt;true&lt;/failOnError&gt;
+        &lt;packages&gt;jakarta.batch.**&lt;/packages&gt;
+        &lt;classes&gt;${project.build.directory}/dependency&lt;/classes&gt;
+    &lt;/configuration&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For Java 11, the corresponding Java 11 signature file must be configured, e.g. in the Java 11-activated profile:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>&lt;plugin&gt;
+    &lt;groupId&gt;org.netbeans.tools&lt;/groupId&gt;
+    &lt;artifactId&gt;sigtest-maven-plugin&lt;/artifactId&gt;
+    &lt;configuration&gt;
+       &lt;sigfile&gt;${project.build.directory}/sigtest-copy/sigtest/sigtest-1.6-batch.standalone.tck.sig-2.1-se11-OpenJDK-J9&lt;/sigfile&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Likewise for Java 17, the corresponding Java 17 signature file must be configured, e.g. in the Java 17-activated profile:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>&lt;plugin&gt;
+    &lt;groupId&gt;org.netbeans.tools&lt;/groupId&gt;
+    &lt;artifactId&gt;sigtest-maven-plugin&lt;/artifactId&gt;
+    &lt;configuration&gt;
+        &lt;sigfile&gt;${project.build.directory}/sigtest-copy/sigtest/sigtest-1.6-batch.standalone.tck.sig-2.1-se17-TemurinHotSpot&lt;/sigfile&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note we construct our runner POM like this leveraging the standard Maven behavior for merging profile plugin configuration with non-profile plugin configuration.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_required_maven_configuration_summarized">11.4.3. Required Maven configuration - summarized</h4>
+<div class="paragraph">
+<p>To summarize and say it another way, the <strong>REQUIRED</strong> config consists of these configuration parameter elements with values exactly as shown above in the previous section:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&lt;action/&gt;</p>
+</li>
+<li>
+<p>&lt;failOnError/&gt;</p>
+</li>
+<li>
+<p>&lt;packages/&gt;</p>
+</li>
+<li>
+<p>&lt;sigfile/&gt;  (with value depending on Java 11 vs 17)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>and additionally the <code>&lt;classes/&gt;</code> parameter <strong>REQUIRED</strong> to be set in such a way that the implementation is tested, (including any packaging of the Jakarta Batch API by the implementation).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_expected_output_2">11.5. Expected Output</h3>
+<div class="listingblock">
+<div class="content">
+<pre>$ mvn verify
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------&lt; jakarta.batch:com.ibm.jbatch.tck.sigtest.exec &gt;------------
+
+ ...
+ ...
+
+[INFO] --- sigtest-maven-plugin:1.6:check (default-cli) @ com.ibm.jbatch.tck.sigtest.exec ---
+
+[INFO] Packages: jakarta.batch.**
+[INFO] SignatureTest report
+Base version: 2.1.0
+Tested version: 2.1.0
+Check mode: src [throws normalized]
+Constant checking: on
+
+Warning: incorrect classpath parameter: C:\git\jakarta\batch-tck\com.ibm.jbatch.tck.sigtest.exec\target\classes (C:\git\jakarta\batch-tck\com.ibm.jbatch.tck.sigtest.exec\target\classes). This directory or jar file will be ignored!
+
+
+[INFO] /home/java_user/jkbatch/tckdir/jakarta.batch.official.tck-2.1.0/runners/sigtest/target/surefire-reports/sigtest/TEST-com.ibm.jbatch.tck.sigtest.exec-2.1.0.xml: 0 failures in /home/java_user/jkbatch/tckdir/jakarta.batch.official.tck-2.1.0/runners/sigtest/target/sigtest-copy/sigtest/sigtest-1.6-batch.standalone.tck.sig-2.1-se11-OpenJDK-J9</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong> Also a '0' exit status should be returned from the <code>mvn verify</code> command line (shown by <code>echo $?</code>).</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong> Included in the output above is an expected warning about the "incorrect classpath parameter" <strong>target/classes</strong>. This occurs because our execution project only tests content pulled in as dependencies. It is unfortunate the plugin is this noisy here, and this can be ignored.</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong> The <code>Base version:</code> in the above output comes from the signature file under test, so should appear exactly as shown.  The <code>Test version:</code>, on the other hand, comes from the version of the module executing the tests, and so a user not using the runner module could see their own value here.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_forcing_a_signature_test_failure_optional">11.6. Forcing a Signature Test failure (optional)</h3>
+<div class="paragraph">
+<p>Though it is not required it can be useful to validate the setup by forcing a failure in the signature test.</p>
+</div>
+<div class="paragraph">
+<p>E.g. one approach would be to to swap the profile activation definition in the runner POM so that the the 'jdk11' profile gets activated in the presence of Java 17 (instead of Java 11), and vice versa, so that when running with each of Java 11 or 17 the opposite, incorrect signature file will be used.</p>
+</div>
+<div class="paragraph">
+<p>E.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    &lt;profiles&gt;
+        &lt;profile&gt;
+            &lt;id&gt;jdk11&lt;/id&gt;
+            &lt;activation&gt;
+                &lt;!-- Force failure
+                 &lt;jdk&gt;11&lt;/jdk&gt;
+                 --&gt;
+                &lt;jdk&gt;17&lt;/jdk&gt;
+                ...
+        &lt;profile&gt;
+            &lt;id&gt;jdk17&lt;/id&gt;
+            &lt;activation&gt;
+                &lt;!-- Force failure
+                 &lt;jdk&gt;17&lt;/jdk&gt;
+                 --&gt;
+                &lt;jdk&gt;11&lt;/jdk&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This should produce output like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ mvn verify
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------&lt; jakarta.batch:com.ibm.jbatch.tck.sigtest.exec &gt;------------
+ ...
+ ...
+[INFO] --- sigtest-maven-plugin:1.6:check (default-cli) @ com.ibm.jbatch.tck.sigtest.exec ---
+[INFO] Packages: jakarta.batch.**
+[ERROR] SignatureTest report
+Base version: 2.1.0
+Tested version: 2.1.0
+Check mode: src [throws normalized]
+Constant checking: on
+
+Warning: incorrect classpath parameter: C:\git\jakarta\batch-tck\com.ibm.jbatch.tck.sigtest.exec\target\classes (C:\git\jakarta\batch-tck\com.ibm.jbatch.tck.sigtest.exec\target\classes). This directory or jar file will be ignored!
+
+Missing Nested Classes
+----------------------
+
+jakarta.batch.api.partition.PartitionReducer$PartitionStatus:                   nested public final static java.lang.Enum$EnumDesc
+jakarta.batch.runtime.BatchStatus:      nested public final static java.lang.Enum$EnumDesc
+jakarta.batch.runtime.Metric$MetricType:nested public final static java.lang.Enum$EnumDesc
+
+Missing Superclasses or Superinterfaces
+---------------------------------------
+
+jakarta.batch.api.partition.PartitionReducer$PartitionStatus:                   interface java.lang.constant.Constable
+jakarta.batch.runtime.BatchStatus:      interface java.lang.constant.Constable
+jakarta.batch.runtime.Metric$MetricType:interface java.lang.constant.Constable
+
+Missing Methods
+---------------
+
+jakarta.batch.api.partition.PartitionReducer$PartitionStatus:                   method public final java.util.Optional&lt;java.lang.Enum$EnumDesc&lt;jakarta.batch.api.partition.PartitionReducer$PartitionStatus&gt;&gt; java.lang.Enum.describeConstable()
+jakarta.batch.runtime.BatchStatus:      method public final java.util.Optional&lt;java.lang.Enum$EnumDesc&lt;jakarta.batch.runtime.BatchStatus&gt;&gt; java.lang.Enum.describeConstable()
+jakarta.batch.runtime.Metric$MetricType:method public final java.util.Optional&lt;java.lang.Enum$EnumDesc&lt;jakarta.batch.runtime.Metric$MetricType&gt;&gt; java.lang.Enum.describeConstable()
+
+
+
+[INFO] C:\git\jakarta\batch-tck\com.ibm.jbatch.tck.sigtest.exec\target\surefire-reports\sigtest\TEST-com.ibm.jbatch.tck.sigtest.exec-2.1.0.xml: 1 failures in C:\git\jakarta\batch-tck\com.ibm.jbatch.tck.sigtest.exec\target\sigtest-copy\sigtest\sigtest-1.6-batch.standalone.tck.sig-2.1-se17-TemurinHotSpot
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and a non-zero exit status should be returned by <code>mvn verify</code> (shown by <code>echo $?</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generating_the_signature_files_optional">11.7. Generating the Signature Files (optional)</h3>
+<div class="paragraph">
+<p>Though it is not required for running the TCK, it could perhaps be useful debugging to know how to generate the signature files.</p>
+</div>
+<div class="paragraph">
+<p>Of course, this is also necessary for producing the TCK in the first place, and updating it after making new API changes or supporting new Java versions.</p>
+</div>
+<div class="paragraph">
+<p>Simply run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ mvn sigtest:generate</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since the main plugin configuration as well as the profile-based configuration (activated by current JDK level) is added at the plugin-level (rather than the execution-level), no additional configuration is required.   The plugin will generate to the same output locations used during the <code>check</code> goal, e.g. <strong>target/sigtest-copy/sigtest/sigtest-1.6-batch.standalone.tck.sig-2.1-se11-OpenJDK-J9</strong> (possibly overwriting whatever was there).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_junit_test_suite_in_detail_optional">12. JUnit test suite in detail (Optional)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_the_flow_of_a_typical_tck_test">12.1. The flow of a typical TCK test</h3>
+<div class="paragraph">
+<p>The basic test flow simply involves a JUnit test method using the JobOperator API to start (and possibly restart) one or more job instances of jobs defined via one of the test JSLs, making use of some number of <code>com.ibm.jbatch.tck.artifacts</code> Java artifacts.
+The JobOperator is wrapped by a thin layer which blocks waiting for the job to finish executing (more on this in the discussion of the <strong>porting package SPI</strong> later in the document).</p>
+</div>
+<div class="paragraph">
+<p>Several tests intentionally produce failures to test relevant portions of the specification, so a normal execution may cause a number of stack traces, error messages, etc. to stdout.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_porting_package_spi">12.2. Porting Package SPI</h3>
+<div class="paragraph">
+<p>The Jakarta Batch TCK relies on an implementation of a "porting package" SPI to function, in order to verify test execution results.
+The reason is that the Jakarta Batch specification API alone does not provide a convenient-enough mechanism to check results.</p>
+</div>
+<div class="paragraph">
+<p>A default, "polling" implementation of this SPI is shipped within the TCK itself.
+The expectation is that the typical Jakarta Batch implementation will be content to use the TCK-provided, default implementation of the porting package SPI.</p>
+</div>
+<div class="paragraph">
+<p>Further detail on the porting package is provided later in this document, in case you wish to provide your own, different implementation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adjusting_the_default_timeout_value">12.3. Adjusting the Default Timeout Value</h3>
+<div class="paragraph">
+<p>The JobOperatorBridge is a utility/helper class in the Jakarta Batch TCK which makes use of the following system property:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>tck.execution.waiter.timeout</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>using a default value of <code>900000</code> (900 seconds).</p>
+</div>
+<div class="paragraph">
+<p>This prevents tests from "hanging" indefinitely if something catastrophic occurs causing the job to never complete (or if the porting package SPI "waiter" is never notified for some reason).</p>
+</div>
+<div class="paragraph">
+<p>Note that some of the tests (e.g. the chunk tests involving time-based checkpointing) will take at least 15-25 seconds to run on any hardware, so any default value less than that applied to all tests would cause failures simply due to timing (and not because of any failure in the underlying Jakarta Batch implementation).</p>
+</div>
+<div class="paragraph">
+<p>The value of 900 seconds was chosen, then, to avoid falsely reporting an error because of timing out too soon, allowing plenty of time for a test to finish executing, even on slower hardware, and leaves some time to attach a debugger.</p>
+</div>
+<div class="paragraph">
+<p>It does not, however, provide "fast failure" in case of a hang or runaway thread.</p>
+</div>
+<div class="paragraph">
+<p>In any case, this timeout value can be customized (say, to increase when debugging or decrease to force a faster failure in some cases).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_default_test_specific_wait_times_and_how_to_adjust_timeout_values">12.4. Default Test-Specific Wait Times, and How to Adjust Timeout Values</h3>
+<div class="paragraph">
+<p>Some of the TCK tests sleep for a short period of time to allow an operation to complete or to force a timeout.</p>
+</div>
+<div class="paragraph">
+<p>These wait times are defaulted via properties that are also specified in the TCK source repo at path: <code>com.ibm.jbatch.tck/src/main/resources/tck.default.sleep.time.properties</code>.   (Note this exact file may not be used in the sample 'runner' modules provided with the TCK).</p>
+</div>
+<div class="paragraph">
+<p>As with many typical decisions regarding timeout values, we attempt to strike a good balance between failing quickly when appropriate but allowing legitimate work to complete.</p>
+</div>
+<div class="paragraph">
+<p>These values can be adjusted if timing issues are seen in the implementation being tested.
+Refer to the comments in the test source for a specific test to better understand how the time value is used for that test.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_working_with_tck_source_debugging_etc">12.5. Working with TCK source (debugging, etc.)</h3>
+<div class="paragraph">
+<p>For most development/debug use cases it is recommended to refer to the source in the Jakarta Batch TCK] GitHub repository [<a href="https://github.com/eclipse-ee2j/batch-tck" class="bare">https://github.com/eclipse-ee2j/batch-tck</a>], using this documentation, and GitHub tags/releases, etc. to match the official level tested in the TCK distribution.</p>
+</div>
+<div class="paragraph">
+<p>Note too that for an implementation to pass the TCK, it must run against the shipped TCK test suite binary as-is (and not against a modified TCK).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_arquillian_ee_platform_tests">12.6. Arquillian / EE Platform Tests</h3>
+<div class="paragraph">
+<p>The EE Platform version of the TCK uses Arquillian to run the JUnit 5 tests.  It works by:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the standard Arquillian dependencies as for JUnit4, except the JUnit4 runner</p>
+</li>
+<li>
+<p>Using the official Arquillian JUnit5 extension and enables it globally via a service loader file</p>
+</li>
+<li>
+<p>Enabling the Arquillian JUnit5 extension by setting <code>junit.jupiter.extensions.autodetection.enabled</code> system property to true in pom.xml</p>
+</li>
+<li>
+<p>Using an Arquillian extension specific for Batch TCK to create a deployment for each test</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The Batch TCK Arquillian extension is implemented in its own module within the Batch TCK. It contains :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Arquillian extension class</p>
+</li>
+<li>
+<p>A service loader file to register the extension with Arquillian</p>
+</li>
+<li>
+<p>A service loader file to register the Arquillian JUnit 5 extension with JUnit 5 (because it&#8217;s not included in the extension module)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multiple_maven_executions_for_multiple_classpath_configurations">12.7. Multiple Maven Executions for Multiple Classpath Configurations</h3>
+<div class="paragraph">
+<p>One specification detail in particular significantly complicates the TCK.  To validate the rules described in <strong>Section 10.4 JobOperator</strong> and subsections, the TCK needs to test both the cases in which the application does and does not provide a JobOperator CDI Bean.  This requires multiple "classpath" variations (with the TCK itself playing the role of "application" here).  Because of this we require multiple test executions to be configured in Maven, and the full JUnit portion of the TCK will consist of both of these executions, both of which must be executed successfully in order to pass the TCK and claim compliance.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tck_challengesappeals_process">13. TCK Challenges/Appeals Process</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://jakarta.ee/committees/specification/tckprocess/">Jakarta EE TCK Process 1.1</a> will govern all process details used for challenges to the Jakarta Batch TCK.</p>
+</div>
+<div class="paragraph">
+<p>Except from the <strong>Jakarta EE TCK Process 1.1</strong>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Specifications are the sole source of truth and considered overruling to the TCK in all senses. In the course of implementing a specification and attempting to pass the TCK, implementations may come to the conclusion that one or more tests or assertions do not conform to the specification, and therefore MUST be excluded from the certification requirements.</p>
+</div>
+</blockquote>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Requests for tests to be excluded are referred to as Challenges. This section identifies who can make challenges to the TCK, what challenges to the TCK may be submitted, how these challenges are submitted, how and to whom challenges are addressed.</p>
+</div>
+</blockquote>
+</div>
+<div class="sect2">
+<h3 id="_filing_a_challenge">13.1. Filing a Challenge</h3>
+<div class="paragraph">
+<p>The challenge process is defined within the <span class="underline">Challenges</span> section within the <strong>Jakarta EE TCK Process 1.1</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Challenges will be tracked via the <a href="https://github.com/eclipse-ee4j/batch-api/issues">issues</a> of the Jakarta Batch Specification repository.</p>
+</div>
+<div class="paragraph">
+<p>As a shortcut through the challenge process mentioned in the <strong>Jakarta EE TCK Process 1.1</strong> you can click <a href="https://github.com/eclipse-ee4j/batch-api/issues/new?labels=challenge">here</a>, though it is recommended that you read through the challenge process to understand it in detail.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_certification_of_compatibility">14. Certification of Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://jakarta.ee/committees/specification/tckprocess">Jakarta EE TCK Process 1.1</a> will define the core process details used to certify compatibility with the Jakarta Batch specification, through execution of the Jakarta Batch TCK.</p>
+</div>
+<div class="paragraph">
+<p>Except from the <strong>Jakarta EE TCK Process 1.1</strong>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Jakarta EE is a self-certification ecosystem.
+If you wish to have your implementation listed on the official <a href="https://jakarta.ee" class="bare">https://jakarta.ee</a> implementations page for the given specification, a certification request as defined in this section is required.</p>
+</div>
+</blockquote>
+</div>
+<div class="sect2">
+<h3 id="_filing_a_certification_request">14.1. Filing a Certification Request</h3>
+<div class="paragraph">
+<p>The certification of compatibility process is defined within the <span class="underline">Certification of Compatibility</span> section within the <strong>Jakarta EE TCK Process 1.1</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Certifications will be tracked via the <a href="https://github.com/eclipse-ee4j/batch-api/issues">issues</a> of the Jakarta Batch Specification repository.</p>
+</div>
+<div class="paragraph">
+<p>As a shortcut through the certification of compatibility process mentioned in the <strong>Jakarta EE TCK Process 1.1</strong> you can click <a href="https://github.com/eclipse-ee4j/batch-api/issues/new?labels=certification">here</a>, though it is recommended that you read through the certification process to understand it in detail.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tck_spi_porting_package_in_depth_optional">15. TCK SPI "Porting Package" in-depth (optional)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most users should be able to skip this section.  They will be able to rely
+on having the TCK do "polling" for job completion.  In case an alternate solution is required, the following details are included.</p>
+</div>
+<div class="paragraph">
+<p>The two porting package SPI classes in the Jakarta Batch TCK are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>com.ibm.jbatch.tck.spi.JobExecutionWaiter</strong></p>
+</li>
+<li>
+<p><strong>com.ibm.jbatch.tck.spi.JobExecutionWaiterFactory</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The default implementations of these provided by the Jakarta Batch TCK are, respectively:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>com.ibm.jbatch.tck.polling.TCKPollingExecutionWaiterFactory$TCKPollingExecutionWaiter</strong></p>
+</li>
+<li>
+<p><strong>com.ibm.jbatch.tck.polling.TCKPollingExecutionWaiterFactory</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The interface definitions are simply:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">interface</span> <span class="class">JobExecutionWaiterFactory</span> {<span class="directive">public</span> JobExecutionWaiter createWaiter(<span class="type">long</span> executionId, JobOperator jobOp, <span class="type">long</span> sleepTime);}
+
+<span class="directive">public</span> <span class="type">interface</span> <span class="class">JobExecutionWaiter</span> {JobExecution awaitTermination() <span class="directive">throws</span> JobExecutionTimeoutException;}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This SPI can be understood with a simple example showing how it used by the TCK (this sample code is extracted from class <strong>com.ibm.jbatch.tck.utils.JobOperatorBridge</strong> )</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="type">long</span> executionId = jobOp.start(jobName, jobParameters);
+JobExecutionWaiter waiter = waiterFactory.createWaiter(executionId, jobOp, sleepTime);
+<span class="keyword">try</span> {
+  terminatedJobExecution = waiter.awaitTermination();  }
+<span class="keyword">catch</span> (JobExecutionTimeoutException e) { <span class="comment">// ... }</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So all that&#8217;s happening here is that we&#8217;re "waiting" for the asynchronous job execution to complete, using a blocking method that will either return when execution is complete, or throw an exception if we reach the specified 'sleepTime'.And the provided, <strong>com.ibm.jbatch.tck.polling.TCKPollingExecutionWaiterFactory</strong> implementation simply polls repeatedly until the timeout.</p>
+</div>
+<div class="paragraph">
+<p>Finally, note that the <strong>java.util.ServiceLoader</strong> mechanism is used to reference and load the particular SPI implementation.   This implies that you need to update file <code>META-INF/services/com.ibm.jbatch.tck.spi.JobExecutionWaiterFactory</code> and update the contents with your factory classname, in order to replace the default implementation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_links">16. Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Jakarta Batch TCK repository - <a href="https://github.com/eclipse-ee4j/batch-tck" class="bare">https://github.com/eclipse-ee4j/batch-tck</a></p>
+</li>
+<li>
+<p>Jakarta Batch specification/API repository - <a href="https://github.com/eclipse-ee4j/batch-api" class="bare">https://github.com/eclipse-ee4j/batch-api</a></p>
+</li>
+<li>
+<p>Jakarta Batch project home page - <a href="https://projects.eclipse.org/projects/ee4j.jakartabatch" class="bare">https://projects.eclipse.org/projects/ee4j.jakartabatch</a></p>
+</li>
+<li>
+<p>In case there is some detail in the previous JSR 352 TCK reference guide not ported that could possibly be helpful, here is the <a href="https://github.com/WASdev/standards.jsr352.tck/blob/master/com.ibm.jbatch.tck/doc/jsr352-tck-reference-guide.pdf">former JSR 352 TCK reference guide</a>.</p>
+</li>
+<li>
+<p>The original JSR 352 page: <a href="https://www.jcp.org/en/jsr/detail?id=352">JSR 352: Batch Applications for the Java Platform</a>).</p>
+</li>
+<li>
+<p>Arquillian and ShrinkWrap doc: <a href="https://arquillian.org/guides/shrinkwrap_introduction/" class="bare">https://arquillian.org/guides/shrinkwrap_introduction/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_change_history">17. Change History</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_initial_release_jakarta_batch_1_0">17.1. Initial Release - Jakarta Batch 1.0</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>July 17, 2019</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_jakarta_batch_2_0">17.2. Update - Jakarta Batch 2.0</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>July 30, 2020</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_and_major_rework_moving_from_antmaven_jakarta_batch_2_1">17.3. Update (and major rework moving from Ant&#8594;Maven) - Jakarta Batch 2.1</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>January 30, 2022</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-06-05 22:56:40 -0400
+</div>
+</div>
+</body>
+</html>
